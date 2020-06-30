@@ -2,6 +2,6 @@ import React from "react";
 import { StyleSheet, Text } from "react-native";
 
 const styles = StyleSheet.create({
-  text: { fontSize: 72 },
+  text: { fontSize: 80 },
 });
 export const Count = (props) => <Text style={styles.text}>{props.count}</Text>;
