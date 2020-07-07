@@ -1,12 +1,34 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Count } from "./Count";
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Count count={0} />
-    </View>
-  );
+import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
+import contacts from "./contacts";
+
+type MyProps = {};
+
+type MyState = {
+  showContacts: Boolean;
+};
+
+export default class App extends React.Component<MyProps, MyState> {
+  state = { showContacts: false };
+
+  toggleContacts = () => {
+    this.setState((prevState) => ({ showContacts: !prevState.showContacts }));
+  };
+  render() {
+    return (
+      <View style={styles.container}>
+        <Button title="toggle contacts" onPress={this.toggleContacts} />
+        <ScrollView>
+          {contacts.map((contact) => (
+            <View>
+              <Text> {contact.name}</Text>
+              <Text> {contact.tel}</Text>
+            </View>
+          ))}
+        </ScrollView>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
